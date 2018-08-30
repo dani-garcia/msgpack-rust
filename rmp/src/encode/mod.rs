@@ -257,7 +257,7 @@ pub fn write_map_len<W: Write>(wr: &mut W, len: u32) -> Result<Marker, ValueWrit
 /// Panics if `ty` is negative, because it is reserved for future MessagePack extension including
 /// 2-byte type information.
 pub fn write_ext_meta<W: Write>(wr: &mut W, len: u32, ty: i8) -> Result<Marker, ValueWriteError> {
-    assert!(ty >= 0);
+    assert!(ty >= -1);
 
     let marker = match len {
         1 => {
